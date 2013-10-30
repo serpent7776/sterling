@@ -1,0 +1,14 @@
+sterling      by Midgard Serpent
+=================================================
+  v0.11-current
+* ported from DBI to rdbi
+* requires xdg gem
++ normalize transaction data before insert into database
++ added tests
++ some gui improvements
++ added transactions filter
+! some bugfixes
+
+  v0.10
+  19.09.2012 - 14.10.2012
+* first release
