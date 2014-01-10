@@ -56,3 +56,65 @@ r=$db.removeTransaction(tid)
 r=$db.getTransaction(tid)
 if not r.nil? then fail 'tr.remove2' end
 
+begin
+	$data=$db.getCategory(-1)
+	fail 'calling getCategory with nonpositive parameter didn\'t raise error'
+rescue ArgumentError
+	# ok
+else
+	fail 'calling getCategory with nonpositive parameter didn\'t raise ArgumentError'
+end
+
+begin
+	$data=$db.getCategoryPath(-1)
+	fail 'calling getCategoryPath with nonpositive parameter didn\'t raise error'
+rescue ArgumentError
+	# ok
+else
+	fail 'calling getCategoryPath with nonpositive parameter didn\'t raise ArgumentError'
+end
+
+begin
+	$data=$db.updateCategory(-1, {})
+	fail 'calling updateCategory with nonpositive parameter didn\'t raise error'
+rescue ArgumentError
+	# ok
+else
+	fail 'calling updateCategory with nonpositive parameter didn\'t raise ArgumentError'
+end
+
+begin
+	$data=$db.removeCategory(-1)
+	fail 'calling removeCategory with nonpositive parameter didn\'t raise error'
+rescue ArgumentError
+	# ok
+else
+	fail 'calling removeCategory with nonpositive parameter didn\'t raise ArgumentError'
+end
+
+begin
+	$data=$db.getTransaction(-1)
+	fail 'calling getTransaction with nonpositive parameter didn\'t raise error'
+rescue ArgumentError
+	# ok
+else
+	fail 'calling getTransaction with nonpositive parameter didn\'t raise ArgumentError'
+end
+
+begin
+	$data=$db.updateTransaction(-1, {})
+	fail 'calling updateTransaction with nonpositive parameter didn\'t raise error'
+rescue ArgumentError
+	# ok
+else
+	fail 'calling updateTransaction with nonpositive parameter didn\'t raise ArgumentError'
+end
+
+begin
+	$data=$db.removeTransaction(-1)
+	fail 'calling removeTransaction with nonpositive parameter didn\'t raise error'
+rescue ArgumentError
+	# ok
+else
+	fail 'calling removeTransaction with nonpositive parameter didn\'t raise ArgumentError'
+end

@@ -113,8 +113,13 @@ VALUES ('Sterling', #{Version.version}, #{@db_ver})"
 		@conn.execute(query).fetch(:first)[0].to_i;
 	end
 
-	#return data for category with given id
+	# Method: getCategory
+	# Return data for category with given id
+	#
+	# Parameters:
+	# 	id	-	id of a category; must be positive number
 	def getCategory(id)
+		if not id>0 then raise ArgumentError, 'category id must be positive' end
 		query="SELECT ID,parentID,name FROM categories WHERE ID=#{id.to_i}";
 		return @conn.execute(query).as(:Hash).fetch(:first);
 	end
@@ -129,8 +134,13 @@ VALUES ('Sterling', #{Version.version}, #{@db_ver})"
 		return id
 	end
 
-  	#return path for given category
+	# Method: getCategoryPath
+  	# Return path for given category
+	#
+	# Params:
+	# 	id	-	id of a category; must be positive number
 	def getCategoryPath(id)
+		if not id>0 then raise ArgumentError, 'category id must be positive' end
 		query="SELECT name,parentID FROM categories WHERE ID=? LIMIT 1";
 		path=[];
 		stmt=@conn.prepare(query);
@@ -156,8 +166,14 @@ VALUES ('Sterling', #{Version.version}, #{@db_ver})"
 	   	#TODO: return some status code
    	end
 
-	#updates category with given id
+	# Method: updateCategory
+	# Updates category with given id
+	#
+	# Parameters:
+	# categoryID	-	id of a category to update, must be positive integer
+	# categoryData	-	hash of category data
 	def updateCategory(categoryID, categoryData)
+		if not categoryID>0 then raise ArgumentError, 'categoryID must be positive integer' end
 		if CategoryValidator.validate(categoryData)
 			query="UPDATE categories SET parentID=?, name=? WHERE ID=?"
 			stmt=@conn.prepare(query)
@@ -169,8 +185,13 @@ VALUES ('Sterling', #{Version.version}, #{@db_ver})"
 		#TODO: return some status code
 	end
 
-	#removes category with given id
+	# Method: removeCategory
+	# Removes category with given id
+	#
+	# Parameters:
+	# 	categoryID	-	id of a category to be removed
 	def removeCategory(categoryID)
+		if not categoryID>0 then raise ArgumentError, 'categoryID must be positive integer' end
 		#TODO: wrap this into transaction
 		parentID=getCategory(categoryID)['parentID']
 		#remove category
@@ -204,8 +225,13 @@ VALUES ('Sterling', #{Version.version}, #{@db_ver})"
 		return -1;
 	end
 
-	#return data for transaction with given id
+	# Method: getTransaction
+	# Return data for transaction with given id
+	#
+	# Parameters:
+	# 	id	-	id of a transaction, must be positive integer
 	def getTransaction(id)
+		if not id>0 then raise ArgumentError, 'transaction id must be positive integer' end
 		query="SELECT ID, date, count, value, categoryID, descr FROM transactions WHERE ID=#{id.to_i}";
 		return @conn.execute(query).as(:Hash).fetch(:first)
 	end
@@ -221,8 +247,14 @@ VALUES ('Sterling', #{Version.version}, #{@db_ver})"
 		#TODO: return rowID
 	end
 
-   	#update transaction with given id
+	# Method: updateTransaction
+   	# Update transaction with given id
+	#
+	# Parameters:
+	#   id     -   id of a transaction
+	#   data   -   new data to be set
 	def updateTransaction(id, data)
+		if not id>0 then raise ArgumentError, 'transaction id must be positive integer' end
 		query="UPDATE transactions SET date=?, count=?, value=?, categoryID=?, descr=? WHERE ID=?";
 		stmt=@conn.prepare(query);
 		date= data['date'].to_s.empty? ? Date::jd.strftime('%Y-%m-%d') : Date::parse(data['date']).strftime('%Y-%m-%d');
@@ -231,8 +263,13 @@ VALUES ('Sterling', #{Version.version}, #{@db_ver})"
 		#TODO: return some status code
 	end
 
-	#removes transaction with given id
+	# Method: removeTransaction
+	# Removes transaction with given id
+	#
+	# Parameters:
+	#   transactionID   -   id of a transaction
 	def removeTransaction(transactionID)
+		if not transactionID>0 then raise ArgumentError, 'transactionID must be positive integer' end
 		query="DELETE FROM transactions WHERE ID=?";
 		stmt=@conn.prepare(query);
 		stmt.execute(transactionID.to_i);
