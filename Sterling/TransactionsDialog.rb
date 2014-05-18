@@ -89,10 +89,12 @@ class TransactionsDialog < DialogWindow
 		hbox.pack_start(btnbox, false, false, 2);
 		btnTrNew=Gtk::Button.new('_New');
 		btnTrEdit=Gtk::Button.new('_Edit');
+		btnTrDuplicate=Gtk::Button.new('_Duplicate');
 		btnTrRemove=Gtk::Button.new('_Remove');
 		btnTrFilter=Gtk::Button.new('_Filter');
 		btnbox.add(btnTrNew);
 		btnbox.add(btnTrEdit);
+		btnbox.add(btnTrDuplicate);
 		btnbox.add(btnTrRemove);
 		btnbox.add(btnTrFilter);
 		#button events
@@ -115,11 +117,28 @@ class TransactionsDialog < DialogWindow
 				response_id=dialog.run;
 				transactionData=dialog.getTransactionData;
 				dialog.close;
-					if response_id==Gtk::Dialog::ResponseType::OK
-						@db.updateTransaction(iter[0], transactionData);
-						self.reloadData;
-					end
+				if response_id==Gtk::Dialog::ResponseType::OK
+					@db.updateTransaction(iter[0], transactionData);
+					self.reloadData;
+				end
 			end
+		}
+		btnTrDuplicate.signal_connect(:clicked){
+			sel=@transactions.selection;
+			iter=sel.selected;
+			if not iter.nil?
+				dialog=TransactionEditor.new(self);
+				transactionData=@db.getTransaction(iter[0]);
+				dialog.setTransactionData(iter[0], transactionData);
+				response_id=dialog.run;
+				transactionData=dialog.getTransactionData;
+				dialog.close;
+				if response_id==Gtk::Dialog::ResponseType::OK
+					@db.insertTransaction(transactionData);
+					self.reloadData;
+				end
+			end
+
 		}
 		btnTrRemove.signal_connect(:clicked){
 			sel=@transactions.selection;
