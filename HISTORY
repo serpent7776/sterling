@@ -1,6 +1,9 @@
-sterling      by Midgard Serpent
+sterling      by Serpent7776
 =================================================
-  v0.11-current
+  v0.12
++ added support for duplicating transactions
+
+  v0.11
 * ported from DBI to rdbi
 * requires xdg gem
 + normalize transaction data before insert into database
