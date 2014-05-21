@@ -64,7 +64,7 @@ class CategoryEntry < Gtk::HBox
 
 	def categoryID=(categoryID)
 		@data[:categoryID]=categoryID
-		@ctrl['category'].text=DB1.getInstance().getCategoryPath(categoryID)
+		@ctrl['category'].text= categoryID>0 ? DB1.getInstance().getCategoryPath(categoryID) : ""
 	end
 
 end
