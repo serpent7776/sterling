@@ -21,8 +21,13 @@ r=$db.insertCategory(category);
 r=$db.getCategoryPath(4)
 if r!='rootcat/subcategory' then fail "cat.getpath: #{r}" end
 
+category={'name'=>'subsubcategory', 'parentID'=>4}
+r=$db.insertCategory(category);
+r=$db.getCategoryPath(5)
+if r!='rootcat/subcategory/subsubcategory' then fail "cat.getpath: #{r}" end
+
 n=$db.getCategoriesCount
-if n!=4 then fail 'categories.no' end
+if n!=5 then fail 'categories.no' end
 
 r=$db.getCategoryId('subcategory')
 if r!=4 then fail 'categories.id' end

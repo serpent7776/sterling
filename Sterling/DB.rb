@@ -1,6 +1,6 @@
 # vim: set sw=4 ts=4:
 #
-# Copyright © 2012,2013 Serpent7776. All Rights Reserved.
+# Copyright © 2012,2013,2014 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -141,19 +141,21 @@ VALUES ('Sterling', #{Version.version}, #{@db_ver})"
 	# 	id	-	id of a category; must be positive number
 	def getCategoryPath(id)
 		if not id>0 then raise ArgumentError, 'category id must be positive' end
-		query="SELECT name,parentID FROM categories WHERE ID=? LIMIT 1";
-		path=[];
+		query = <<EOS
+WITH RECURSIVE
+tpath(rowno, ID, parentID, name, cpath) AS (
+	SELECT  1, id, parentid, name, name from categories WHERE id=?
+	UNION
+	SELECT p.rowno+1, c.id,c.parentID,c.name, c.name || '/' || p.cpath FROM tpath AS p left join categories AS c on p.parentID=c.ID
+	where c.parentid>=0
+)
+SELECT cpath FROM tpath ORDER BY rowno DESC LIMIT 1;
+EOS
+		path = ''
 		stmt=@conn.prepare(query);
-		name='';
-		while(id.to_i!=0)
-			#TODO: executing this stmt sometimes returns error 'cannot use closed statement'
-			ar=stmt.execute(id.to_i).as(:Array).fetch(:first)
-			(name, id)=ar
-			path.unshift(name);
-			#stmt.cancel;
-		end
-		#stmt.finish;
-		return path.join('/');
+		ar=stmt.execute(id.to_i).as(:Array).fetch(:first)
+		path=ar[0]
+		return path
 	end
 
 	#insert new category
