@@ -1,6 +1,6 @@
 # vim: set sw=4 ts=4:
 #
-# Copyright © 2012,2013 Serpent7776. All Rights Reserved.
+# Copyright © 2012,2013,2014 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -37,7 +37,7 @@ class CategorySelector < DialogWindow
   def initialize(parent)
     #db=DB1.getInstance
     super('Select category', parent);
-    @categories=ScrollingDecorator.new(CategoriesTree.new('Category'), 150, 150)
+    @categories=ScrollingDecorator.new(CategoriesTree.new('Category'), 200, 360)
     self.vbox.add(@categories);
     add_button('OK', Gtk::Dialog::ResponseType::OK);
     add_button('Cancel', Gtk::Dialog::ResponseType::CANCEL);

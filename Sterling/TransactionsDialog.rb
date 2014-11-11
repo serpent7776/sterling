@@ -1,6 +1,6 @@
 # vim: set sw=4 ts=4:
 #
-# Copyright © 2012,2013 Serpent7776. All Rights Reserved.
+# Copyright © 2012,2013,2014 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -71,7 +71,7 @@ class TransactionsDialog < DialogWindow
 		hbox=Gtk::HBox.new;
 		self.vbox.add(hbox);
 		scroller=Gtk::ScrolledWindow.new;
-		scroller.set_policy(Gtk::PolicyType::AUTOMATIC, Gtk::PolicyType::AUTOMATIC).set_size_request(550, 250);
+		scroller.set_policy(Gtk::PolicyType::AUTOMATIC, Gtk::PolicyType::AUTOMATIC).set_size_request(640, 320);
 		scroller.add(@transactions);
 		hbox.add(scroller);
 		#summary box:

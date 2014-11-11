@@ -1,5 +1,5 @@
 #
-# Copyright © 2012,2013 Serpent7776. All Rights Reserved.
+# Copyright © 2012,2013,2014 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -113,7 +113,7 @@ class Sterling < Gtk::Window
       @db.createDefaultCategories;
     end
     #treeview:
-    @finances=ScrollingDecorator.new(FinanceTree.new, 400, 175)
+    @finances=ScrollingDecorator.new(FinanceTree.new, 500, 225)
     #statusbar:
     @statusbar=Gtk::Statusbar.new;
     @status={}
