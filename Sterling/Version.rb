@@ -26,7 +26,7 @@ module Sterling
 
 class Version
 	def Version.version
-		return 0.11;
+		return 0.12;
 	end
 end
 
