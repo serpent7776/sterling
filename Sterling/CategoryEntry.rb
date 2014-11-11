@@ -1,6 +1,6 @@
 # vim: set sw=4 ts=4:
 #
-# Copyright © 2013 Serpent7776. All Rights Reserved.
+# Copyright © 2013,2014 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -63,8 +63,11 @@ class CategoryEntry < Gtk::HBox
 	end
 
 	def categoryID=(categoryID)
-		@data[:categoryID]=categoryID
-		@ctrl['category'].text= categoryID>0 ? DB1.getInstance().getCategoryPath(categoryID) : ""
+		if not categoryID.is_a? Numeric then raise ArgumentError, "category id must be of integer type, #{categoryID.class} given" end
+		if categoryID>0 then
+			@data[:categoryID]=categoryID
+			@ctrl['category'].text= categoryID>0 ? DB1.getInstance().getCategoryPath(categoryID) : ""
+		end
 	end
 
 end

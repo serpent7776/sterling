@@ -1,6 +1,6 @@
 # vim: set sw=4 ts=4:
 #
-# Copyright © 2013 Serpent7776. All Rights Reserved.
+# Copyright © 2013,2014 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -65,7 +65,7 @@ class TransactionsFilterDialog < DialogWindow
 			@ctrl['count_max'].text= filter.count_max.nil? ? '' : filter.count_max.to_s
 			@ctrl['value_min'].text= filter.value_min.nil? ? '' : filter.value_min.to_s
 			@ctrl['value_max'].text= filter.value_max.nil? ? '' : filter.value_max.to_s
-			@ctrl['category'].categoryID= filter.categoryID.nil? ? '' : filter.categoryID
+			@ctrl['category'].categoryID= filter.categoryID.nil? ? 0 : filter.categoryID
 			@ctrl['description'].text= filter.description.nil? ? '' : filter.description
 		end
 		#
