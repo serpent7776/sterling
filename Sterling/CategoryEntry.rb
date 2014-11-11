@@ -67,6 +67,9 @@ class CategoryEntry < Gtk::HBox
 		if categoryID>0 then
 			@data[:categoryID]=categoryID
 			@ctrl['category'].text= categoryID>0 ? DB1.getInstance().getCategoryPath(categoryID) : ""
+		else
+			@data[:categoryID]=0
+			@ctrl['category'].text= ""
 		end
 	end
 
