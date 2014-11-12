@@ -25,11 +25,12 @@
 
 require 'gtk2';
 require 'Sterling/DB1';
+require 'Sterling/TreeView';
 require 'Sterling/Hash-Ext';
 
 module Sterling
 
-class FinanceTree < Gtk::TreeView
+class FinanceTree < TreeView
 
   attr_reader :totalIncome, :totalExpense;
 

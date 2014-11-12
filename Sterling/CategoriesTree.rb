@@ -1,6 +1,6 @@
 # vim: set sw=4 ts=4:
 #
-# Copyright © 2012,2013 Serpent7776. All Rights Reserved.
+# Copyright © 2012,2013,2014 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -25,19 +25,18 @@
 
 require 'gtk2';
 require 'Sterling/DB1';
+require 'Sterling/TreeView';
 require 'Sterling/Hash-Ext';
 
 module Sterling
 
-class CategoriesTree < Gtk::TreeView
+class CategoriesTree < TreeView
 
   def initialize(title)
     treemodel=Gtk::TreeStore.new(Integer, String);
     super(treemodel);
-    #~ @treeview=Gtk::TreeView.new(treemodel);
     renderer=Gtk::CellRendererText.new;
     col=Gtk::TreeViewColumn.new(title, renderer, :text=>1);
-    #~ @treeview.append_column(col);
     append_column(col);
     @cattab={};	#table of categories {id=>TreeIter}
   end

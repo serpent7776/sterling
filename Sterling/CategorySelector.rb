@@ -39,8 +39,8 @@ class CategorySelector < DialogWindow
     super('Select category', parent);
     @categories=ScrollingDecorator.new(CategoriesTree.new('Category'), 200, 360)
     self.vbox.add(@categories);
-    add_button('OK', Gtk::Dialog::ResponseType::OK);
-    add_button('Cancel', Gtk::Dialog::ResponseType::CANCEL);
+    add_button('O_K', Gtk::Dialog::ResponseType::OK);
+    add_button('_Cancel', Gtk::Dialog::ResponseType::CANCEL);
     CategoriesTreeFiller.fill(@categories);
     show_all;
   end
