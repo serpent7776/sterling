@@ -37,7 +37,14 @@ class TreeView < Gtk::TreeView
 				expand_row(sel.path, false)
 			elsif event.keyval == Gdk::Keyval::GDK_Left then
 				sel = selection.selected
-				collapse_row(sel.path)
+				b = collapse_row(sel.path)
+				if not b then
+					if not sel.parent.nil? then
+						selection.select_path(sel.parent.path)
+						set_cursor(sel.parent.path, nil, false)
+					end
+				end
+				b
 			end
 		}
 		signal_connect(:'key-press-event', &key_press_proc);
