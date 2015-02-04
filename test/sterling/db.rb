@@ -4,8 +4,6 @@ require 'Sterling/DB.rb'
 $db=Sterling::DB.new('sterling.db')
 if $db.nil? then fail 'db.create' end
 
-$db.createDefaultCategories
-
 n=$db.getCategoriesCount
 if n!=2 then fail 'categories.no' end
 

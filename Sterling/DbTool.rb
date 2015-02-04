@@ -1,6 +1,6 @@
 # vim: set sw=4 ts=4:
 #
-# Copyright © 2013,2015 Serpent7776. All Rights Reserved.
+# Copyright © 2015 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -23,14 +23,20 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 
+require 'Sterling/DbOpener';
+
 module Sterling
 
-require 'Sterling/DB'
+#general purpose database methods
+class DbTool
 
-class DB1
-
-	def self.getInstance(filename = nil)
-		return @@db.nil? ? @@db=DB.new(filename) : @@db
+	def self.tableExists?(conn, tableName)
+		q="SELECT name FROM sqlite_master WHERE type='table' AND name=?"
+		name = ''
+		conn.prepare(q) do |stmt|
+			name = stmt.execute(tableName).fetch(:first)
+		end
+		return (not(name.nil?) and not(name.empty?))
 	end
 
 end

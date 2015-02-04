@@ -1,5 +1,5 @@
 #
-# Copyright © 2012,2013,2014 Serpent7776. All Rights Reserved.
+# Copyright © 2012,2013,2014,2015 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -107,7 +107,6 @@ class Sterling < Gtk::Window
     #open database
     basedir="#{ENV['HOME']}/.sterling"
     FileUtils.mkdir_p(basedir)
-    #@db=DB.new("#{basedir}/default.db");
     @db=DB1.getInstance("#{basedir}/default.db");
     if @db.getCategoriesCount==0
       @db.createDefaultCategories;

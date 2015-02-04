@@ -1,6 +1,6 @@
 # vim: set sw=4 ts=4:
 #
-# Copyright © 2012,2013,2014 Serpent7776. All Rights Reserved.
+# Copyright © 2012,2013,2014,2015 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -23,88 +23,20 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 
-require 'rdbi';
-require 'rdbi-driver-sqlite3';
 require 'date';
+require 'Sterling/DbOpener';
 require 'Sterling/Category';
 require 'Sterling/Transaction';
 require 'Sterling/CategoryValidator';
-require 'Sterling/Version';
 require 'Sterling/rdbi_result_driver_hash';
 
 module Sterling
 
+# Sterling specific database methods
 class DB
 
 	def initialize(filename)
-		@db_ver=0.10;
-		@conn=RDBI.connect(:SQLite3, :database=>filename)
-		#create tables
-		query=
-"CREATE TABLE IF NOT EXISTS categories(
-  ID INTEGER PRIMARY KEY AUTOINCREMENT,
-  parentID NUMERIC,
-  name TEXT
-);"
-		@conn.execute(query)
-		query=
-"CREATE TABLE IF NOT EXISTS transactions(
-  ID INTEGER PRIMARY KEY AUTOINCREMENT,
-  date TEXT,
-  count NUMERIC,
-  value NUMERIC,
-  categoryID NUMERIC,
-  descr TEXT
-);"
-		@conn.execute(query)
-		#create indices
-		query="CREATE INDEX IF NOT EXISTS transactions_category_index ON transactions(categoryID)";
-		@conn.execute(query);
-		#try to upgrade db
-		upgradeDatabase()
-	end
-
-
-	#upgrade database from previous version
-	def upgradeDatabase
-		begin
-			#take last entry
-			q="SELECT db_ver FROM META ORDER BY ID DESC LIMIT 1"
-			db_ver=@conn.execute(q).fetch(:first)[0].to_f
-		rescue RDBI::Error, SQLite3::SQLException
-			#if error occurs assume we need to upgrade the db
-			#create META table
-			q=
-"CREATE TABLE META(
-	ID INTEGER PRIMARY KEY AUTOINCREMENT,
-	mod_by_app_name TEXT,	-- name of application that modified database
-	mod_by_app_ver TEXT,	-- version of application that modified database
-	db_ver TEXT				-- version to which db was upgraded
-)"
-			@conn.execute(q)
-			#upgrade db
-			q1="SELECT ID,date FROM transactions"
-			q2="UPDATE transactions SET date=? WHERE ID=?"
-			stmt_rd=@conn.prepare(q1)
-			stmt_wr=@conn.prepare(q2)
-			stmt_rd.execute().each { |data|
-				(id,date)=data
-				stmt_wr.execute(Date.parse(date).strftime('%Y-%m-%d'), id)
-			}
-			#insert entry
-			q=
-"INSERT INTO META(mod_by_app_name,mod_by_app_ver,db_ver)
-VALUES ('Sterling', #{Version.version}, #{@db_ver})"
-			@conn.execute(q)
-		end
-	end
-
-	#create two basic categories
-	def createDefaultCategories
-		query="INSERT INTO categories(ID,name,parentID) VALUES(1, 'incomes', 0);"
-		@conn.execute(query);
-		query="INSERT INTO categories(ID,name,parentID) VALUES(2, 'expenses', 0);"
-		@conn.execute(query);
+		@conn = DbOpener.openDatabase(filename)
 	end
 
 	#return number of categories
