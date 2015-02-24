@@ -25,6 +25,7 @@ Test={
 		{:name=>'TransactionValidator', :file=>'TransactionValidator.rb'},
 		{:name=>'TransactionsFilter', :file=>'TransactionsFilter.rb'},
 		{:name=>'DbOpenerTest', :file=>'DbOpenerTest.rb'},
+		{:name=>'DB1Test', :file=>'DB1Test.rb'},
 		]
 }
 

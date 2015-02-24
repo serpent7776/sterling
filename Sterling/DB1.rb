@@ -30,6 +30,7 @@ require 'Sterling/DB'
 class DB1
 
 	def self.getInstance(filename = nil)
+		@@db ||= nil
 		return @@db.nil? ? @@db=DB.new(filename) : @@db
 	end
 
