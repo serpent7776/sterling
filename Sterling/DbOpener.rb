@@ -42,6 +42,11 @@ class DbOpener
 	class DbAlreadyOpened < RuntimeError
 	end
 
+	def self.reset
+		@@db_ver = 0
+		@@conn = nil
+	end
+
 	# try to open database upgrading if needed
 	def self.openDatabase(filename)
 		if @@conn.nil? then
@@ -49,7 +54,7 @@ class DbOpener
 			checkDatabaseVersion()
 			return @@conn
 		else
-			raise DbAlreadyOpened 'database already opened'
+			raise DbAlreadyOpened.new 'database already opened'
 		end
 	end
 
