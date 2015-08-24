@@ -1,6 +1,4 @@
-#!/usr/bin/env ruby
-#
-# Copyright © 2012,2013 Serpent7776. All Rights Reserved.
+# Copyright Â© 2015 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -23,9 +21,8 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 
-require 'Sterling-coin';
+module Sterling
 
-Gtk::init;
-sterling=Sterling::Sterling.new;
-sterling.show_all;
-Gtk::main;
+require 'Sterling/Sterling'
+
+end
