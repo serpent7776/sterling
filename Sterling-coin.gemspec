@@ -6,7 +6,8 @@ Gem::Specification.new do |s|
   s.description = "personal finance manager"
   s.authors     = ["Serpent7776"]
   s.email       = 'serpent7776@gmail.com'
-  s.files       = ["lib/Sterling-coin.rb"]
+  s.files       = `git ls-files lib/`.split "\n"
+  s.executables = `git ls-files bin/`.split("\n").map{|file| file.gsub('bin/', '')}
   s.homepage    = 'https://github.com/serpent7776/sterling'
   s.license     = 'BSD'
 end
