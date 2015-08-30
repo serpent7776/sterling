@@ -10,4 +10,8 @@ Gem::Specification.new do |s|
   s.executables = `git ls-files bin/`.split("\n").map{|file| file.gsub('bin/', '')}
   s.homepage    = 'https://github.com/serpent7776/sterling'
   s.license     = 'BSD'
+  s.add_runtime_dependency 'gtk2', ['~> 2.2']
+  s.add_runtime_dependency 'xdg', ['~> 2.2']
+  s.add_runtime_dependency 'rdbi', ['~> 1.1']
+  s.add_runtime_dependency 'rdbi-driver-sqlite3', ['~> 0.9']
 end
