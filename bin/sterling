@@ -23,7 +23,7 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 
-require 'Sterling-coin';
+require 'sterling_coin';
 
 Gtk::init;
 sterling=Sterling::Sterling.new;
