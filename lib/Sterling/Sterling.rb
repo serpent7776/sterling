@@ -131,9 +131,8 @@ class Sterling < Gtk::Window
     }
     #
     self.reload;
-    #
-    # self.set_icon('/usr/share/icons/sterling.png');
-    self.set_icon(XDG['DATA_DIRS'].to_s+'/icons/sterling.png');
+    gem_dir = Gem::Specification.find_by_name('sterling_coin').gem_dir
+    self.set_icon(gem_dir+'/lib/assets/sterling.png');
   end
 
 #do full reload
