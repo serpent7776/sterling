@@ -98,7 +98,7 @@ class Sterling < Gtk::Window
     menuitem_about_sterling=Gtk::MenuItem.new('About _Sterling');
     menu_about.append(menuitem_about_sterling);
     menuitem_about_sterling.signal_connect(:activate){
-      text=sprintf("Sterling v%.2f\npersonal finance manager\n\nby Serpent7776", Version.version);
+      text=sprintf("Sterling v%s\npersonal finance manager\n\nby Serpent7776", Version.version);
       dialog=Gtk::MessageDialog.new(self, Gtk::Dialog::MODAL,
 	  Gtk::MessageDialog::Type::INFO, Gtk::MessageDialog::ButtonsType::OK, text);
       dialog.run;

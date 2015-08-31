@@ -99,7 +99,7 @@ class DbOpener
 		#insert entry
 		q=
 "INSERT INTO META(mod_by_app_name,mod_by_app_ver,db_ver)
-VALUES ('Sterling', #{Version.version}, #{@@db_ver})"
+VALUES ('Sterling', #{Version.version.to_f}, #{@@db_ver})"
 		@@conn.execute(q)
 		return true
 	end
