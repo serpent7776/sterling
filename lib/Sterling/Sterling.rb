@@ -105,7 +105,7 @@ class Sterling < Gtk::Window
       dialog.close;
     }
     #open database
-    basedir="#{ENV['HOME']}/.sterling"
+    basedir="#{XDG['CONFIG']}/sterling"
     FileUtils.mkdir_p(basedir)
     @db=DB1.getInstance("#{basedir}/default.db");
     if @db.getCategoriesCount==0
