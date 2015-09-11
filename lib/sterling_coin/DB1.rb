@@ -23,9 +23,9 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 
-module Sterling
+module SterlingCoin
 
-require 'Sterling/DB'
+require 'sterling_coin/DB'
 
 class DB1
 

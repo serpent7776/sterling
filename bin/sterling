@@ -26,6 +26,6 @@
 require 'sterling_coin';
 
 Gtk::init;
-sterling=Sterling::Sterling.new;
+sterling=SterlingCoin::Sterling.new;
 sterling.show_all;
 Gtk::main;

@@ -1,6 +1,6 @@
 # vim: set sw=4 ts=4:
 #
-# Copyright © 2012,2013,2014 Serpent7776. All Rights Reserved.
+# Copyright © 2012,2013,2014,2015 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -25,13 +25,13 @@
 
 require 'gtk2';
 require 'date';
-require 'Sterling/DialogWindow';
-require 'Sterling/TransactionEditor';
-require 'Sterling/TransactionsFilter';
-require 'Sterling/TransactionsFilterDialog';
-require 'Sterling/DB1';
+require 'sterling_coin/DialogWindow';
+require 'sterling_coin/TransactionEditor';
+require 'sterling_coin/TransactionsFilter';
+require 'sterling_coin/TransactionsFilterDialog';
+require 'sterling_coin/DB1';
 
-module Sterling
+module SterlingCoin
 
 class TransactionsDialog < DialogWindow
 	#category_id - category for which show transactions or nil to show all

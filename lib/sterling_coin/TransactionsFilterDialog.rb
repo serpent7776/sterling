@@ -1,6 +1,6 @@
 # vim: set sw=4 ts=4:
 #
-# Copyright © 2013,2014 Serpent7776. All Rights Reserved.
+# Copyright © 2013,2014,2015 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -24,11 +24,11 @@
 #
 
 require 'gtk2';
-require 'Sterling/DialogWindow';
-require 'Sterling/CategoryEntry';
-require 'Sterling/TransactionsFilter';
+require 'sterling_coin/DialogWindow';
+require 'sterling_coin/CategoryEntry';
+require 'sterling_coin/TransactionsFilter';
 
-module Sterling
+module SterlingCoin
 
 class TransactionsFilterDialog < DialogWindow
 

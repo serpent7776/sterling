@@ -21,8 +21,8 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 
-module Sterling
+module SterlingCoin
 
-require 'Sterling/Sterling'
+require 'sterling_coin/Sterling'
 
 end

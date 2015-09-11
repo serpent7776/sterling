@@ -25,7 +25,7 @@
 
 require 'rdbi';
 
-module Sterling;
+module SterlingCoin;
 
 class DbUpgrader
 

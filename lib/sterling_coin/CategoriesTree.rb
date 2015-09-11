@@ -1,6 +1,6 @@
 # vim: set sw=4 ts=4:
 #
-# Copyright © 2012,2013,2014 Serpent7776. All Rights Reserved.
+# Copyright © 2012,2013,2014,2015 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -24,11 +24,11 @@
 #
 
 require 'gtk2';
-require 'Sterling/DB1';
-require 'Sterling/TreeView';
-require 'Sterling/Hash-Ext';
+require 'sterling_coin/DB1';
+require 'sterling_coin/TreeView';
+require 'sterling_coin/Hash-Ext';
 
-module Sterling
+module SterlingCoin
 
 class CategoriesTree < TreeView
 

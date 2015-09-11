@@ -23,9 +23,9 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 
-require 'Sterling/DbOpener';
+require 'sterling_coin/DbOpener';
 
-module Sterling
+module SterlingCoin
 
 #general purpose database methods
 class DbTool

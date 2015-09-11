@@ -1,6 +1,6 @@
 # vim: set sw=4 ts=4:
 #
-# Copyright © 2012,2013 Serpent7776. All Rights Reserved.
+# Copyright © 2012,2013,2015 Serpent7776. All Rights Reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -24,14 +24,14 @@
 #
 
 require 'gtk2';
-require 'Sterling/DB1';
-require 'Sterling/CategoryEditor';
-require 'Sterling/CategoriesTree';
-require 'Sterling/ScrollingDecorator';
-require 'Sterling/CategoriesTreeFiller';
-require 'Sterling/DialogWindow';
+require 'sterling_coin/DB1';
+require 'sterling_coin/CategoryEditor';
+require 'sterling_coin/CategoriesTree';
+require 'sterling_coin/ScrollingDecorator';
+require 'sterling_coin/CategoriesTreeFiller';
+require 'sterling_coin/DialogWindow';
 
-module Sterling
+module SterlingCoin
 
 class CategoriesList < DialogWindow
 

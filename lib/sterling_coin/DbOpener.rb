@@ -25,11 +25,11 @@
 
 require 'rdbi';
 require 'rdbi-driver-sqlite3';
-require 'Sterling/Version';
-require 'Sterling/DbTool';
-require 'Sterling/DbUpgrader';
+require 'sterling_coin/Version';
+require 'sterling_coin/DbTool';
+require 'sterling_coin/DbUpgrader';
 
-module Sterling;
+module SterlingCoin;
 
 class DbOpener
 

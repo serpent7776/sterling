@@ -24,13 +24,13 @@
 #
 
 require 'date';
-require 'Sterling/DbOpener';
-require 'Sterling/Category';
-require 'Sterling/Transaction';
-require 'Sterling/CategoryValidator';
-require 'Sterling/rdbi_result_driver_hash';
+require 'sterling_coin/DbOpener';
+require 'sterling_coin/Category';
+require 'sterling_coin/Transaction';
+require 'sterling_coin/CategoryValidator';
+require 'sterling_coin/rdbi_result_driver_hash';
 
-module Sterling
+module SterlingCoin
 
 # Sterling specific database methods
 class DB

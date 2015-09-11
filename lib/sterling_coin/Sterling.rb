@@ -25,14 +25,14 @@
 require 'gtk2';
 require 'fileutils';
 require 'xdg';
-require 'Sterling/DB1';
-require 'Sterling/CategoriesList';
-require 'Sterling/TransactionsDialog';
-require 'Sterling/ScrollingDecorator';
-require 'Sterling/FinanceTree';
-require 'Sterling/Version';
+require 'sterling_coin/DB1';
+require 'sterling_coin/CategoriesList';
+require 'sterling_coin/TransactionsDialog';
+require 'sterling_coin/ScrollingDecorator';
+require 'sterling_coin/FinanceTree';
+require 'sterling_coin/Version';
 
-module Sterling
+module SterlingCoin
 
 #main class creating main window
 class Sterling < Gtk::Window
