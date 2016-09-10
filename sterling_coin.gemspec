@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.files       = `git ls-files lib/`.split "\n"
   s.executables = `git ls-files bin/`.split("\n").map{|file| file.gsub('bin/', '')}
   s.homepage    = 'https://github.com/serpent7776/sterling'
-  s.license     = 'BSD'
+  s.license     = 'BSD-2-Clause'
   s.add_runtime_dependency 'gtk2', ['~> 2.2']
   s.add_runtime_dependency 'xdg', ['~> 2.2']
   s.add_runtime_dependency 'rdbi', ['~> 1.1']
