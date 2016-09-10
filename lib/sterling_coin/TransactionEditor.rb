@@ -93,7 +93,7 @@ class TransactionEditor < DialogWindow
 		@transactionID=0;
 		@transactionData={
 			'date'=>Date.today.strftime('%d.%m.%Y'),
-			'count'=>0,
+			'count'=>1,
 			'value'=>0,
 			'categoryID'=>0,
 			'descr'=>''
