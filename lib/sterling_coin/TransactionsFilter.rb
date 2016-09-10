@@ -237,7 +237,15 @@ class TransactionsFilter
 
 	def filter_description(description)
 		description=description.to_s
-		return (@description.nil? or description.include?(@description))
+		# perform smart case filter
+		# if lowercase string given, use case-insensitive filtering
+		if @description == @description.downcase
+			# case-insensitive match
+			return (@description.nil? or description.downcase.include?(@description.downcase))
+		else
+			# case-sensitive match
+			return (@description.nil? or description.include?(@description))
+		end
 	end
 
 end
