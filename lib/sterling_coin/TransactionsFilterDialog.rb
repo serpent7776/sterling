@@ -85,7 +85,7 @@ class TransactionsFilterDialog < DialogWindow
 		table.attach(@ctrl['description'], 1, 3, 4, 5, Gtk::AttachOptions::FILL | Gtk::AttachOptions::EXPAND, Gtk::AttachOptions::FILL | Gtk::AttachOptions::EXPAND, 2, 2);
 		#
 		self.vbox.add(table);
-		self.add_button('_OK', Gtk::Dialog::ResponseType::OK);
+		self.add_button('O_K', Gtk::Dialog::ResponseType::OK);
 		self.add_button('_Cancel', Gtk::Dialog::ResponseType::CANCEL);
 		#
 		btnClear=Gtk::Button.new('Clea_r')
