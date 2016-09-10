@@ -188,7 +188,12 @@ class TransactionsDialog < DialogWindow
 				iter[1]= tr['date'].to_s.empty? ? Date.jd() : Date::parse(tr['date']);
 				iter[2]=tr['count'].to_f;
 				iter[3]=tr['value'].to_f;
-				iter[4]=@db.getCategoryPath(tr['categoryID']); #get category path
+				#get category path
+				iter[4] = if tr['categoryID'] > 0
+							@db.getCategoryPath(tr['categoryID'])
+						else 
+							''
+						end
 				iter[5]=tr['descr'];
 				@totalItems+=1
 				@totalValue+=iter[2]*iter[3]
